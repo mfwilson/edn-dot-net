@@ -1,25 +1,26 @@
-﻿using System.Reflection;
-using System.Runtime.InteropServices;
+﻿namespace EDNReaderWriter
+
+open System.Reflection
+open System.Runtime.InteropServices
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EDNTypes")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EDNTypes")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[<assembly: AssemblyTitle("EDNReaderWriter")>]
+[<assembly: AssemblyDescription("")>]
+[<assembly: AssemblyConfiguration("")>]
+[<assembly: AssemblyCompany("")>]
+[<assembly: AssemblyProduct("EDNReaderWriter")>]
+[<assembly: AssemblyCopyright("Copyright ©  2012")>]
+[<assembly: AssemblyTrademark("")>]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
+[<assembly: ComVisible(false)>]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d7e5b58b-4551-4e01-91e1-4fc3d9e3612e")]
+[<assembly: Guid("545C88A0-6E9F-4195-AB80-7124BA0DE645")>]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,6 +32,10 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: AssemblyInformationalVersion("1.0.0.0")]
+[<assembly: AssemblyVersion("1.0.0.0")>]
+[<assembly: AssemblyFileVersion("1.0.0.0")>]
+[<assembly: AssemblyInformationalVersion("1.0.0.0")>]
+
+()
+
+
