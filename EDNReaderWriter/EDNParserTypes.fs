@@ -33,6 +33,7 @@ module EDNParserTypes =
                     | EDNKeyword of QualifiedSymbol
                     | EDNInteger of BigInteger
                     | EDNFloat of double
+                    | EDNDecimal of decimal
                     | EDNComment of string
                     | EDNDiscard of EDNValueParsed
                     | EDNTaggedValue of QualifiedSymbol * EDNValueParsed

@@ -46,6 +46,8 @@ module TypeHandlers =
  
                 | EDNFloat f -> f :> System.Object
 
+                | EDNDecimal d -> d :> System.Object
+
                 | EDNList l -> new EDNList (Seq.filter isNotCommentOrDiscard l |> Seq.map this.handleValue) :> System.Object
 
                 | EDNVector v -> new EDNVector (Array.filter isNotCommentOrDiscard v |> Array.map this.handleValue) :> System.Object
