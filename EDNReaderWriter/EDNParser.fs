@@ -11,6 +11,7 @@
 
 namespace EDNReaderWriter
 module EDNParser =
+    open System
     open System.IO
     open System.Text.RegularExpressions
     open System.Numerics
@@ -75,12 +76,14 @@ module EDNParser =
     let internal numberFormat = NumberLiteralOptions.AllowMinusSign
                                ||| NumberLiteralOptions.AllowFraction
                                ||| NumberLiteralOptions.AllowExponent
+                               ||| NumberLiteralOptions.AllowSuffix
 
     let internal parseNumber : Parser<EDNValue, unit> = 
         skipWhiteSpace >>.
         numberLiteral numberFormat "number"
         |>> fun nl ->
                 if nl.IsInteger then EDNInteger(BigInteger.Parse nl.String)
+                else if nl.SuffixChar1 = 'M' then EDNDecimal(Decimal.Parse nl.String)
                 else EDNFloat(float nl.String)
     
     let internal parseComment = 

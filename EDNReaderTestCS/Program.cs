@@ -13,6 +13,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,7 @@ namespace EDNReaderTestCS
     {
         static void Main(string[] args)
         {
+            TestParseFloat();
             TestParser();
             TestEquality();
             TestSampleCustomHandler();
@@ -43,6 +45,21 @@ namespace EDNReaderTestCS
         public static void TestSampleCustomHandler()
         {
             var r1 = EDNReader.EDNReaderFuncs.readString("[1 2 {:a 3 1.2 \\c {1 2} 4}]", new SampleCustomHandler());
+        }
+
+        public static void TestParseFloat()
+        {
+            var r1 = EDNReader.EDNReaderFuncs.readString("0.1234 0.429M");            
+            Debug.Assert(r1[0] is double);
+            Debug.Assert(r1[1] is decimal);
+            var value = (double) r1[0];                                                     
+            Debug.Assert( Math.Abs(Math.Round(value, 4) - 0.1234) < 0.00001 );
+            Debug.Assert( ((decimal) r1[1]) == 0.429m );
+            
+            var r2 = EDNReader.EDNReaderFuncs.readString("{:ns/key 0.01M}");                      
+            var map = r2.FirstOrDefault() as EDNMap;
+            Debug.Assert(map != null);
+            Debug.Assert(map[new EDNKeyword("ns", "key")] is decimal);
         }
 
         public static void TestreadString()
